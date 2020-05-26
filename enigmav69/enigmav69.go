@@ -8,52 +8,59 @@ import (
 
 func main() {
 	var input string
+	var b bool
 
 	flag.StringVar(&input, "input", "a", "--input *String*, default value a lowercase only")
+	flag.BoolVar(&b, "b", false, "--b, type this to decrypt")
 
 	flag.Parse()
 
-	encrypt(input)	
+	var a rune
+
+	a = 'a'
+
+	fmt.Printf("%d\n", a)
+	
+	if b {
+		decrypt(input)
+	} else {
+		encrypt(input)
+	}
 }
 
 func encrypt(input string) {
 	letters := []rune(input)
-	var alphabet = []string{"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
 	var output = ""
 
 	for _, letter := range letters {
-		for i := 0; i < len(alphabet); i++ {
-			if string(letter) == alphabet[i] {
-				
-				for x := 0; x <= i; x++ {
-					output = output + "69"
-				}
+		if string(letter) == " " {
+			output = output + "-"
+		} else {
+			for x := 0; x <= int(letter); x++ {
+				output = output + "69"
 			}
-
+			output = output + "."
 		}
-		output = output + "-"
-	}
 
-	decrypt(output)
+	}
 
 	fmt.Println(output)
 }
 
 func decrypt (estring string) {
-	letters := strings.Split(estring, "-")
-	var alphabet = []string{"empty","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
-	var dletters = ""
+	words := strings.Split(estring, "-")
+	var output = ""
+	var c = ""
 
-	for _, letter := range letters {
-		var i int
-		i = (len(strings.TrimSuffix(letter, "\n")) / 2)
-		
-		if alphabet[i] != "empty" {
-			dletters = dletters + alphabet[i]
-		} else {
-			dletters = dletters + " "
+	for _, word := range words {
+		chars := strings.Split(word, ".")
+		for _, char := range chars {
+			c = strings.TrimSuffix(char, "\n")
+			output = output + string(rune(len(c) / 2 - 1))
 		}
+		output = output + " "
 	}
 
-	fmt.Println(dletters)
+	fmt.Println(output)
+
 }
