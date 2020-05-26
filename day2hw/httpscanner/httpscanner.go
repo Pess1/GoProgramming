@@ -37,6 +37,7 @@ func main () {
 	var status string
 
 	flag.StringVar(&url, "u", "", "--u *url*")
+	flag.Parse()
 
 	if url == "" {
 		fmt.Println("Please provide an url")
