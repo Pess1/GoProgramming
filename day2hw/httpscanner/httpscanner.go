@@ -25,7 +25,7 @@ func sendRequest(url string) (string, string) {
 
 	scanner := bufio.NewScanner(resp.Body)
 	for scanner.Scan() {
-		output = output + scanner.Text()
+		output = output + scanner.Text() + "\n"
 	}
 
 	return status, output
@@ -46,5 +46,5 @@ func main () {
 		status, output = sendRequest(url)
 	}
 
-	fmt.Println(status, output)
+	fmt.Println("Response status:", status, output)
 }
