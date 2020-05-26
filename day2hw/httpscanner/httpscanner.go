@@ -8,8 +8,9 @@ import (
 	"bufio"
 )
 
-func sendRequest(url string) (string, string) {
-	var output string
+func sendRequest(url string) (string, string, string) {
+	var body string
+	var head string
 	var status string
 
 	resp, err := http.Get(url)
@@ -21,19 +22,26 @@ func sendRequest(url string) (string, string) {
 
 	defer resp.Body.Close()
 
-	status = "Response status: " + resp.Status
+	status = "Response status: " + resp.Status + "\n"
 
-	scanner := bufio.NewScanner(resp.Body)
-	for scanner.Scan() {
-		output = output + scanner.Text() + "\n"
+	bodyscanner := bufio.NewScanner(resp.Body)
+	for bodyscanner.Scan() {
+		body = body + bodyscanner.Text() + "\n"
 	}
 
-	return status, output
+	header := resp.Header
+
+	for line := range header {
+		head = head + line
+	}
+
+	return status, head, body
 }
 
 func main () {
 	var url string
-	var output string
+	var header string
+	var body string
 	var status string
 
 	flag.StringVar(&url, "u", "", "--u *url*")
@@ -43,8 +51,8 @@ func main () {
 		fmt.Println("Please provide an url")
 		os.Exit(1)
 	} else {
-		status, output = sendRequest(url)
+		status, header, body = sendRequest(url)
 	}
 
-	fmt.Println(status, output)
+	fmt.Println(status, header, body)
 }
