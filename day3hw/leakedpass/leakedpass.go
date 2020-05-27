@@ -7,13 +7,13 @@ import (
 	"flag"
 )
 
-func checkPass(pass string) string {
-	passlist, err := os.Open("10-million-password-list-top-1000000.txt")
+func checkPass(pass string, listname string) string {
+	passlist, err := os.Open(listname)
 	defer passlist.Close()
 
 	if err != nil {
 		fmt.Println("Error", err)
-		os.Exit(2)
+		os.Exit(3)
 	}
 
 	output := "Password not found on the password list"
@@ -30,8 +30,9 @@ func checkPass(pass string) string {
 
 func main() {
 	var pass string
-	output := ""
+	var listname string
 
+	flag.StringVar(&listname, "l", "", "--l *password list file name*")
 	flag.StringVar(&pass, "p", "", "--p *password to check if compromised*")
 	flag.Parse()
 
@@ -40,7 +41,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	output = checkPass(pass)
+	if listname == "" {
+		fmt.Println("Please provide the passwordlist file")
+		os.Exit(2)
+	}
+
+	output := checkPass(pass, listname)
 
 	fmt.Println(output)
 }
