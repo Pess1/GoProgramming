@@ -31,7 +31,7 @@ func sendRequest(url string) (string, string, string) {
 
 	for name, values := range resp.Header {
 		for _, value := range values {
-			head = head + name + value + "\n"
+			head = head + name + " " + value + "\n"
 		}
 	}
 
