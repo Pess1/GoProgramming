@@ -15,12 +15,6 @@ func main() {
 
 	flag.Parse()
 
-	var a rune
-
-	a = 'a'
-
-	fmt.Printf("%d\n", a)
-	
 	if b {
 		decrypt(input)
 	} else {
