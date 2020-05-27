@@ -34,6 +34,8 @@ func convert(file1 string, file2 string) {
 		content2 += scanner2.Text()
 	}
 
+	fmt.Println(content1)
+
 	maxlen := 0
 	minlen := 0
 	if len(content1) <= len(content2) {

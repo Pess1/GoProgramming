@@ -1,4 +1,4 @@
-This is a simple program that compares the binary values of two files and prints out the percentage they match. This program was done for Tero Karvinen's Go-Programming course.
+This is a simple program that compares the content of two files and prints out the percentage they match. This program was done for Tero Karvinen's Go-Programming course.
 Link to course page: http://terokarvinen.com/2020/go-programming-course-2020-w22/
 
 You can run this program in Linux by typing ./filematcher --f1 *file1 name* --f2 *file2 name*
