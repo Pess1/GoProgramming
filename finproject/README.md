@@ -2,6 +2,7 @@ This is a simple program that compares the content of two files and prints out t
 Link to course page: http://terokarvinen.com/2020/go-programming-course-2020-w22/
 
 You can run this program in Linux by typing ./filematcher --f1 *file1 name* --f2 *file2 name*
+You can add --i to enable img mode (Work in progress. Matches 2 same images 100% but struggles with similar images)
 In Windows just type .\filematcher but otherwise the syntax is the same.
 
 Sources I that helped me greatly:
@@ -10,6 +11,10 @@ Sources I that helped me greatly:
 - https://gobyexample.com/reading-files
 - https://www.teachwithict.com/binary-representation-of-images.html
 - https://socketloop.com/tutorials/golang-convert-an-image-file-to-byte
+- https://golang.org/pkg/bufio/
+- https://github.com/nfnt/resize
+- https://pkg.go.dev/github.com/nfnt/resize?tab=doc
+- https://stackoverflow.com/questions/22945486/golang-converting-image-image-to-byte
 
 I am still not sure what percentage of similarity could be considered for example as a sign of plagiarism since I haven't tested enough files yet.
 With txt files where one had "aaaa" and the second had "aaab" the program printed out 75% so at least the math should be correct.
