@@ -7,9 +7,13 @@ Use examples:
 
 ![With text files:](./screenText.png)
 ![With images:](./screenImg.png)
+
 You can run this program in Linux by typing ./filematcher --f1 *file1 name* --f2 *file2 name*
+
 You can add --i to enable img mode (Work in progress. Matches 2 same images 100% but still testing left to do for two similar images)
+
 Supported image types are PNG and JPEG/JPG
+
 In Windows just type .\filematcher but otherwise the syntax is the same.
 
 Sources I that helped me greatly:
@@ -26,4 +30,5 @@ Sources I that helped me greatly:
 - https://stackoverflow.com/questions/46437169/png-encoding-with-go-is-slow
 
 I am still not sure what percentage of similarity could be considered for example as a sign of plagiarism, or img identification since I haven't tested enough files yet.
+
 With txt files where one had "aaaa" and the second had "aaab" the program printed out 75% so at least the math should be correct.
