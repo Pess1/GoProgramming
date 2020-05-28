@@ -3,6 +3,9 @@ Link to course page: http://terokarvinen.com/2020/go-programming-course-2020-w22
 
 === Made by Arttu Pesonen ===
 
+Use examples:
+![With text files:](./screenText.png)
+![With images:](./screenImg.png)
 You can run this program in Linux by typing ./filematcher --f1 *file1 name* --f2 *file2 name*
 You can add --i to enable img mode (Work in progress. Matches 2 same images 100% but still testing left to do for two similar images)
 Supported image types are PNG and JPEG/JPG
